@@ -1,6 +1,6 @@
 module my_reg (clk, bus, enable, out);
 
-input clk
+input clk;
 input [15:0] bus;  // en=1 bus value is stored in reg, en=0
 input enable;  // en=0 reg value is unchanged
 output reg [15:0] out;  // output from reg
