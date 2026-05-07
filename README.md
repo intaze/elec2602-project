@@ -16,11 +16,11 @@ Other details:
 - The processor inlcudes 3 16-bit registers
 - All the instructions can be passed to the processor using a testbench
 - Currently works in simulation
-- The number of bits used to encode the instructions
-00 -> Load (LDI)
-01 -> Move
-10 -> Add
-11 -> Sub
+- The number of bits used to encode the instructions\n
+00 -> Load (LDI)\n
+01 -> Move\n
+10 -> Add\n
+11 -> Sub\n
 
 
 
