@@ -4,19 +4,23 @@
 
 ### Essential
 
-Your task is to implement a processor that can execute the following instructions:
+The task is to implement a processor that can execute the following instructions:
 
-LDI Rx D; (Rx = D, D is a constant)
+LDI Rx D; (Rx = D)
 MOV Rx Ry; (Rx = Ry)
 ADD Rx Ry; (Rx = Rx + Ry)
 SUB Rx Ry; (Rx = Rx - Ry)
+
 Other details:
 
-- The initial processor must use at least 3 16-bit registers
+- The processor inlcudes 3 16-bit registers
 - All the instructions can be passed to the processor using a testbench
-- You only need to show this working in simulation
-- The number of bits used to encode your instructions is up to you. It is r ecommended that you use at least 3 or 4 instruction bits so that you can add additional instructions later. 
-
+- Currently works in simulation
+- The number of bits used to encode the instructions
+00 -> Load (LDI)
+01 -> Move
+10 -> Add
+11 -> Sub
 
 
 
