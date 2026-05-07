@@ -1,14 +1,9 @@
-module tri_buf(a,b,enable);
+module tri_buf(a,bus,enable);
 
 input [15:0] a;
-output [15:0] reg b;
+output [15:0] b;
 input enable;
 
-always @(enable or a) begin
-    if (enable) begin
-        b = a;
-    end else begin
-        b = 1'bz; 
-    end
-end
+assign b = enable ? a : 16'bz;
+
 endmodule
