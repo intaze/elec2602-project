@@ -4,7 +4,7 @@
 module essentials_tb;
     reg clk;
     reg reset;
-    reg [4:0] instruction_5bit; // This is what the FSM actually uses 
+    reg [4:0] instruction_5bit; 
     reg [15:0] data_in;     
 
     // Corrected to 3 bits to match the updated FSM
@@ -17,7 +17,6 @@ module essentials_tb;
 
     wire [15:0] bus_monitor;
 
-    // Instantiate the FSM (or the TOP module if you moved to the full architecture)
     my_fsm fsm (
         .rst(reset),
         .clk(clk),
@@ -37,22 +36,26 @@ module essentials_tb;
         .rst(reset),
         .instruction(instruction_5bit),
         .data_in(data_in),
-        .bus_out(bus_monitor) // bus_monitor now connects directly to the system bus
+        .bus_out(bus_monitor) 
     );
 
     task apply_instr;
-        input [4:0] opcode;   // Expanded to handle 5-bit total instruction
-        input [1:0] dest;
+        input [4:0] opcode;   
+        input [1:0] dest;    
         input [15:0] imm_src;
         input [63:0] label;
         begin
-            @(negedge clk);       
-            // Now correctly updates the 5-bit instruction used by the FSM
-            instruction_5bit = {opcode[4:0]}; // Only opcode is used for FSM control
+            @(negedge clk);
+
+            instruction_5bit = {dest, opcode[2:0]};
             data_in = imm_src;
-            @(posedge clk); #1;   
             @(posedge clk); #1;
-            $display("[%0t ns] %s | Instr: %b | Data_In: 0x%h | Bus: 0x%h | AddSub: %b",
+            @(posedge clk); #1;
+
+            if (opcode[2:0] == 3'b010 || opcode[2:0] == 3'b011) begin
+                @(posedge clk); #1;
+            end
+            $display("[%0t ns] %s | Instr: %b | Data_In: 0x%d | Bus: 0x%d | AddSub: %d",
                      $time, label, instruction_5bit, data_in, bus_monitor, addsub);
         end
     endtask
