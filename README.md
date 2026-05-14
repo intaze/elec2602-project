@@ -3,7 +3,6 @@
 ## Project Description
 
 ### Essential
-
 Your task is to implement a processor that can execute the following instructions:
 
 - LDI Rx D; (Rx = D, D is a constant)
@@ -17,12 +16,18 @@ Other details:
 - You only need to show  this working in simulation
 - The number of bits used to encode the instructions:
     - 00000 -> Load (LDI)
-    - 00001 -> Move
-    - 00010 -> Add
-    - 00011 -> Sub
-    - 00100 -> 2s complement
-    - 00101 -> Multiplication
-    - 00110 -> Division 
+    - 00001 -> Move 
+    - 00010 -> Add (+)
+    - 00011 -> Sub (-)
+
+### Extensions
+Conditional branch instructions
+Unconditional jump instructions.
+Loading and storing to memory
+Adding 3 more different arithmetic instructions
+    - 00100 -> 2s complement 
+    - 00101 -> Multiplication (*)
+    - 00110 -> Division (/)
 
 
 
