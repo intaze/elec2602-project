@@ -45,7 +45,13 @@ module my_fsm (
             end
 
             default: begin
-                g_out = 16'b0; // Default case, set g_out to 0
+                reg_tri = 2'b00; // Tri-state register 0 to bus
+                reg_en = 2'b00; // Enable register 0 to store value from bus
+                a_en = 0;
+                a_tri = 0;
+                g_en = 0;
+                g_tri = 0;
+                addsub = 0; // Default to addition
             end
         endcase
     end
