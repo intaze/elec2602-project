@@ -9,7 +9,7 @@ module my_alu (a_in,bus,addsub,g_out);
             g_out = a_in + bus;
         end 
         else begin
-            g = a - bus;
+            g_out = a_in - bus;
         end
     end
 endmodule

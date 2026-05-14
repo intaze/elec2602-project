@@ -13,13 +13,23 @@ module essentials_tb;
     initial clk = 0;
     always  #10 clk = ~clk;
 
+    wire [1:0] reg_en, reg_tri;
+    wire a_en, a_tri, g_en, g_tri;
+    reg [4:0] instruction_5bit;
+
     my_fsm dut (
-        .instruction(instruction),
-        .a_in(data_in),
-        .bus(16'h0000),  
-        .g_out(g_out),
+        .rst(reset),
+        .clk(clk),
+        .instruction(instruction_5bit),
+        .reg_en(reg_en),
+        .reg_tri(reg_tri),
+        .a_en(a_en),
+        .a_tri(a_tri),
+        .g_en(g_en),
+        .g_tri(g_tri),
         .addsub(addsub)
     );
+
 
     task apply_instr;
         input [1:0] opcode;

@@ -33,14 +33,14 @@ module my_fsm (
             5'b00010: begin //add
                 addsub = 1'b0; // Set addsub to 0 for addition
                 g_en = 1'b1; // Enable register G to store result from ALU
-                g_tri = 1'b10; // Tri-state register G to bus
-                reg_en [0] = 2'b01; // Enable register 0 to store value from bus
+                g_tri = 1'b1; // Tri-state register G to bus
+                reg_en[0] = 1'b1;; // Enable register 0 to store value from bus
             end
 
             5'b00011: begin //subtract
                 addsub = 1'b1; // Set addsub to 1 for subtraction
                 g_en = 1'b1; // Enable register G to store result from ALU
-                g_tri = 1'b10; // Tri-state register G to bus
+                g_tri = 1'b1; // Tri-state register G to bus
                 reg_en [0] = 2'b01; // Enable register 0 to store value from bus
             end
 
