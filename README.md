@@ -14,12 +14,15 @@ Your task is to implement a processor that can execute the following instruction
 Other details:
 - The initial processor must use at least 3 16-bit registers
 - All the instructions can be passed to the processor using a testbench
-- You only need to show this working in simulation
+- You only need to show  this working in simulation
 - The number of bits used to encode the instructions:
-    - 00 -> Load (LDI)
-    - 01 -> Move
-    - 10 -> Add
-    - 11 -> Sub
+    - 00000 -> Load (LDI)
+    - 00001 -> Move
+    - 00010 -> Add
+    - 00011 -> Sub
+    - 00100 -> 2s complement
+    - 00101 -> Multiplication
+    - 00110 -> Division 
 
 
 
