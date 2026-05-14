@@ -20,11 +20,11 @@ Other details:
     - 00010 -> Add (+)
     - 00011 -> Sub (-)
 
-### Extensions
-Conditional branch instructions
-Unconditional jump instructions.
-Loading and storing to memory
-Adding 3 more different arithmetic instructions
+### Extension
+- Conditional branch instructions
+- Unconditional jump instructions.
+- Loading and storing to memory.
+- Adding 3 more different arithmetic instructions (For a total of 5)
     - 00100 -> 2s complement 
     - 00101 -> Multiplication (*)
     - 00110 -> Division (/)
