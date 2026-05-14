@@ -1,9 +1,9 @@
-module tri_buf(a,bus,enable);
+module tri_buf(
+    input [15:0] a,
+    output [15:0] bus,
+    input enable
+);
 
-input [15:0] a;
-output [15:0] b;
-input enable;
-
-assign b = enable ? a : 16'bz;
+    assign bus = enable ? a : 16'bz;
 
 endmodule
