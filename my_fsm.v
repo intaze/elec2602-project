@@ -2,8 +2,8 @@ module my_fsm (
     input rst,
     input clk,
     input [4:0] instruction,
-    output reg [1:0] reg_en, //change number of bits depending on how many registers you have
-    output reg [1:0] reg_tri, //change this too
+    output reg [2:0] reg_en, //change number of bits depending on how many registers you have
+    output reg [2:0] reg_tri, //change this too
     output reg a_en,
     output reg a_tri,
     output reg g_en,

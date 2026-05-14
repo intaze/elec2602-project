@@ -4,19 +4,18 @@
 module essentials_tb;
     reg clk;
     reg reset;
-    reg [3:0] instruction;   
+    reg [4:0] instruction_5bit; // This is what the FSM actually uses 
     reg [15:0] data_in;     
 
-    wire [15:0] g_out;       
-    wire        addsub;      
+    // Corrected to 3 bits to match the updated FSM
+    wire [2:0] reg_en, reg_tri; 
+    wire a_en, a_tri, g_en, g_tri;
+    wire addsub;
 
     initial clk = 0;
     always  #10 clk = ~clk;
 
-    wire [1:0] reg_en, reg_tri;
-    wire a_en, a_tri, g_en, g_tri;
-    reg [4:0] instruction_5bit;
-
+    // Instantiate the FSM (or the TOP module if you moved to the full architecture)
     my_fsm dut (
         .rst(reset),
         .clk(clk),
@@ -30,26 +29,26 @@ module essentials_tb;
         .addsub(addsub)
     );
 
-
     task apply_instr;
-        input [1:0] opcode;
+        input [2:0] opcode;   // Expanded to handle 5-bit total instruction
         input [1:0] dest;
         input [15:0] imm_src;
-        input [63:0] label;      
+        input [63:0] label;
         begin
             @(negedge clk);       
-            instruction = {opcode, dest};
-            data_in     = imm_src;
+            // Now correctly updates the 5-bit instruction used by the FSM
+            instruction_5bit = {opcode, dest}; 
+            data_in = imm_src;
             @(posedge clk); #1;   
-            @(posedge clk); #1;    
-            $display("[%0t ns]  %s | instr=%b  data_in=0x%04h | g_out=0x%04h  addsub=%b",
-                     $time, label, instruction, data_in, g_out, addsub);
+            @(posedge clk); #1;
+            $display("[%0t ns]  %s | instr=%b  data_in=0x%04h | addsub=%b",
+                     $time, label, instruction_5bit, data_in, addsub);
         end
     endtask
-
+    
     initial begin
         reset       = 1;
-        instruction = 4'b0000;
+        instruction_5bit = 5'b00000;
         data_in     = 16'h0000;
 
         @(posedge clk); #1;
