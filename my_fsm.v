@@ -2,6 +2,7 @@ module my_fsm (
     input rst,
     input clk,
     input [4:0] instruction,
+    input [1:0] src_sel,
     output reg [2:0] reg_en, //change number of bits depending on how many registers you have
     output reg [2:0] reg_tri, //change this too
     output reg a_en,
@@ -12,8 +13,8 @@ module my_fsm (
 );
 
     always @(*) begin
-        reg_tri = 2'b00; // Tri-state register 0 to bus
-        reg_en = 2'b00; // Enable register 0 to store value from bus
+        reg_tri = 3'b000; // Tri-state register 0 to bus
+        reg_en = 3'b000; // Enable register 0 to store value from bus
         a_en = 0;
         a_tri = 0;
         g_en = 0;
